@@ -1,10 +1,10 @@
 package com.example.spring_framework.game;
 
 public class GameRunner {
-    MarioGame game;
+    private SuperContraGame game;
 
-    public GameRunner(MarioGame marioGame) {
-        this.game = marioGame;
+    public GameRunner(SuperContraGame game) {
+        this.game = game;
     }
 
     public void run() {
