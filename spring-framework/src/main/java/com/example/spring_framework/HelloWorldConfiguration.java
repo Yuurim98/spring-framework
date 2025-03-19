@@ -2,6 +2,7 @@ package com.example.spring_framework;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 record Person(String name, int age, Address address) {};
 record Address(String city, String gu) {};
@@ -35,13 +36,14 @@ public class HelloWorldConfiguration {
     }
 
     @Bean(name = "customBean")
+    @Primary
     public Address address() {
         return new Address("서울시", "송파구");
     }
 
     @Bean()
     public Address address2() {
-        return new Address("서울시", "송파구");
+        return new Address("서울시", "강동구");
     }
 
 }
