@@ -1,5 +1,7 @@
 package com.example.spring_framework;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App02HelloWorldSpring {
@@ -17,6 +19,8 @@ public class App02HelloWorldSpring {
         System.out.println(context.getBean("person3Parameters"));
         System.out.println(context.getBean("customBean"));
         System.out.println(context.getBean(Address.class));
+
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 
     }
 
