@@ -5,7 +5,7 @@ import com.example.spring_framework.game.MarioGame;
 import com.example.spring_framework.game.PacmanGame;
 import com.example.spring_framework.game.SuperContraGame;
 
-public class AppGamingBasicJava {
+public class App01GamingBasicJava {
 
     public static void main(String[] args) {
 
