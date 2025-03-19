@@ -24,7 +24,7 @@ public class HelloWorldConfiguration {
         return new Person("홍길동", 23);
     }
 
-    @Bean
+    @Bean(name = "customBean")
     public Address address() {
         return new Address("서울시", "송파구");
     }
