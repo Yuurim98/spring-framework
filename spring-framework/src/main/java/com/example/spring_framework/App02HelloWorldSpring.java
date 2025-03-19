@@ -11,6 +11,9 @@ public class App02HelloWorldSpring {
 
         // 빈을 정의한 메서드명이 빈 이름이 됨
         System.out.println(context.getBean("name"));
+        System.out.println(context.getBean("age"));
+        System.out.println(context.getBean("person"));
+        System.out.println(context.getBean("address"));
 
     }
 
