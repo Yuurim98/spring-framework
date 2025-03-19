@@ -30,12 +30,17 @@ public class HelloWorldConfiguration {
     }
 
     @Bean
-    public Person person3Parameters(String name, int age, Address address) { // 빈 타입으로 매개변수 주입
-        return new Person(name, age, address);
+    public Person person3Parameters(String name, int age, Address address2) { // 빈 타입으로 매개변수 주입
+        return new Person(name, age, address2);
     }
 
     @Bean(name = "customBean")
     public Address address() {
+        return new Address("서울시", "송파구");
+    }
+
+    @Bean()
+    public Address address2() {
         return new Address("서울시", "송파구");
     }
 
