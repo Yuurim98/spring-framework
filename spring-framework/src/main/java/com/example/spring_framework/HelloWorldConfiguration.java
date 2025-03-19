@@ -24,6 +24,11 @@ public class HelloWorldConfiguration {
         return new Person("홍길동", 23);
     }
 
+    @Bean
+    public Person person2MethodCall() {
+        return new Person(name(), age()); // 빈을 정의한 메서드를 호출하여 가져옴
+    }
+
     @Bean(name = "customBean")
     public Address address() {
         return new Address("서울시", "송파구");
