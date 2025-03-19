@@ -1,7 +1,6 @@
-package com.example.spring_framework;
+package com.example.spring_framework.helloworld;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.example.spring_framework.helloworld.Address;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App02HelloWorldSpring {
