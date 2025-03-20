@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("com.example.spring_framework.game") // 지정한 패키지에서 @Component 찾아 빈 등록
-public class App03GamingSpringBeans {
+public class GamingAppLauncherApplication {
 
     public static void main(String[] args) {
 
-       var context = new AnnotationConfigApplicationContext(App03GamingSpringBeans.class);
+       var context = new AnnotationConfigApplicationContext(GamingAppLauncherApplication.class);
 
        context.getBean(GamingConsole.class).up();
        context.getBean(GameRunner.class).run();
