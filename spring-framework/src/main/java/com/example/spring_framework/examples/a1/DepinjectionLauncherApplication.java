@@ -9,21 +9,28 @@ import org.springframework.stereotype.Component;
 
 @Component
 class BusinessClass {
+
     Dependency1 dependency1;
 
     Dependency2 dependency2;
 
-    @Autowired
-    public void setDependency1(Dependency1 dependency1) {
-        System.out.println("setter 주입 1");
+    public BusinessClass(Dependency1 dependency1, Dependency2 dependency2) {
+        System.out.println("생성자 주입 ");
         this.dependency1 = dependency1;
-    }
-
-    @Autowired
-    public void setDependency2(Dependency2 dependency2) {
-        System.out.println("setter 주입 2");
         this.dependency2 = dependency2;
     }
+
+//    @Autowired
+//    public void setDependency1(Dependency1 dependency1) {
+//        System.out.println("setter 주입 1");
+//        this.dependency1 = dependency1;
+//    }
+//
+//    @Autowired
+//    public void setDependency2(Dependency2 dependency2) {
+//        System.out.println("setter 주입 2");
+//        this.dependency2 = dependency2;
+//    }
 
     public String toString() {
         return "1 : " + dependency1 + " 2 : " + dependency2;
@@ -47,7 +54,7 @@ public class DepinjectionLauncherApplication {
 
     public static void main(String[] args) {
 
-       var context = new AnnotationConfigApplicationContext(DepinjectionLauncherApplication.class);
+        var context = new AnnotationConfigApplicationContext(DepinjectionLauncherApplication.class);
 
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
         // 1) 클래스 만들기 전 : depinjectionLauncherApplication
@@ -65,8 +72,11 @@ public class DepinjectionLauncherApplication {
         // 4) @Autowired를 통해 필드 주입 후 :
         // 1 : com.example.spring_framework.examples.a1.Dependency1@4f67eb2a 2 : com.example.spring_framework.examples.a1.Dependency2@4a668b6e
 
-        System.out.println(context.getBean(BusinessClass.class).toString());
+        // System.out.println(context.getBean(BusinessClass.class).toString());
         // 5) "setter 주입 1", "setter 주입 2" 출력
+
+        System.out.println(context.getBean(BusinessClass.class).toString());
+        // 5) "생성자 주입" 출력
 
     }
 
