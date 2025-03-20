@@ -1,9 +1,4 @@
-package com.example.spring_framework;
-
-import com.example.spring_framework.game.GameRunner;
-import com.example.spring_framework.game.MarioGame;
-import com.example.spring_framework.game.PacmanGame;
-import com.example.spring_framework.game.SuperContraGame;
+package com.example.spring_framework.game;
 
 public class App01GamingBasicJava {
 
