@@ -1,5 +1,8 @@
 package com.example.spring_framework.game;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class PacmanGame implements GamingConsole {
 
     @Override
