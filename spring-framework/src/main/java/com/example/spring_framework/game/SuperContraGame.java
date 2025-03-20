@@ -1,5 +1,10 @@
 package com.example.spring_framework.game;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component // 여기에 빈 이름 지정할 수도 있음
+@Qualifier("SuperContraGameQualifier") // 명시하지 않아도 됨 - 주입받는 곳에서 어노테이션과 빈 이름 명시도 가능함
 public class SuperContraGame implements GamingConsole {
 
     @Override
