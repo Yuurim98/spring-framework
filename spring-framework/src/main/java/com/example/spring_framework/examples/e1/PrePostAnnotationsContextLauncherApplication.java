@@ -2,6 +2,7 @@ package com.example.spring_framework.examples.e1;
 
 import com.example.spring_framework.examples.d1.BeanScopesLauncherApplication;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import java.util.Arrays;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -21,6 +22,11 @@ class SomeClass {
     @PostConstruct
     public void initialize() {
         someDependency.getReady();
+    }
+
+    @PreDestroy
+    public void close() {
+        System.out.println("컨텍스트 종료 직전 실행");
     }
 
 
@@ -44,6 +50,7 @@ public class PrePostAnnotationsContextLauncherApplication {
 
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 
+        context.close();
     }
 
 }
