@@ -4,6 +4,7 @@ import java.util.Arrays;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,6 +13,7 @@ class ClassA {
 }
 
 @Component
+@Lazy
 class ClassB {
 
     private ClassA classA;
@@ -19,6 +21,10 @@ class ClassB {
     public ClassB(ClassA classA) {
         System.out.println("ClassB 생성 로직");
         this.classA = classA;
+    }
+
+    public void print() {
+        System.out.println("메서드 호출");
     }
 }
 
@@ -30,7 +36,16 @@ public class LazyInitializationLauncherApplication {
         var context = new AnnotationConfigApplicationContext(
             LazyInitializationLauncherApplication.class);
 
-        // ClassB 생성자를 호출하는 코드가 없는데도 "ClassB 생성 로직" 이 출력됨
+        System.out.println("컨텍스트 시작");
+
+        context.getBean(ClassB.class).print();
+
+        /*
+        컨텍스트 시작
+        ClassB 생성 로직
+        메서드 호출
+         */
+
     }
 
 }
