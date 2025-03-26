@@ -12,7 +12,9 @@ public class CourseController {
     public List<Course> getCourseList() {
         return Arrays.asList(
             new Course(1, "Spring", "홍길동"),
-            new Course(2, "Spring Boot", "홍길동")
+            new Course(2, "Spring Boot", "홍길동"),
+            new Course(3, "JPA", "홍길동"),
+            new Course(4, "AWS", "홍길동")
         );
     }
 }
