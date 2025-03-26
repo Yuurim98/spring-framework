@@ -12,6 +12,7 @@ public class XmlConfigurationContextLauncher {
 
         System.out.println(context.getBean("name")); // 홍길동
         System.out.println(context.getBean("age")); // 20
+        System.out.println(context.getBean("gameRunner")); // com.example.spring_framework.game.GameRunner@1f9f6368
     }
 
 }

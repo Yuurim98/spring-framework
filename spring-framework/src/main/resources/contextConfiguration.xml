@@ -13,4 +13,6 @@
     <constructor-arg value="20"/>
   </bean>
 
+  <context:component-scan base-package="com/example/spring_framework/game" />
+
 </beans>
