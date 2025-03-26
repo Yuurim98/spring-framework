@@ -3,7 +3,6 @@ package com.example.spring_framework.examples.f1;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.Arrays;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
