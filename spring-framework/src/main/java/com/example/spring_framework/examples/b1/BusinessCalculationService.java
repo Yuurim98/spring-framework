@@ -1,9 +1,10 @@
 package com.example.spring_framework.examples.b1;
 
 import java.util.Arrays;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+// @Component
+@Service // Component 대체
 public class BusinessCalculationService {
 
     private DataService dataService;
