@@ -1,9 +1,19 @@
 package com.example.jpa_hibernate.course;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Course {
 
+    @Id
     private long id;
+
+    @Column(name = "name") // 필수 X
     private String name;
+
+    @Column(name = "author")
     private String author;
 
     public Course() {}
