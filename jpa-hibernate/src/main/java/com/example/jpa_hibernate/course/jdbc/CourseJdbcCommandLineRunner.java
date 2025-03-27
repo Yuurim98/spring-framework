@@ -19,5 +19,7 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
         repository.insert(new Course(3, "JPA 배우기", "홍길동"));
 
         repository.deleteById(3);
+
+        System.out.println(repository.findById(2));
     }
 }
