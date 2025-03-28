@@ -13,4 +13,9 @@ public class HelloController {
         return "Hello!";
     }
 
+    @RequestMapping("/hello-jsp")
+    public String helloJsp() {
+        return "hello";
+    }
+
 }
