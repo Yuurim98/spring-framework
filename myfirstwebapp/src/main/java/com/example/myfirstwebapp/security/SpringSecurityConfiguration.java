@@ -13,12 +13,17 @@ public class SpringSecurityConfiguration {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
+        UserDetails userDetails = User.builder()
+            .passwordEncoder(password -> passwordEncoder().encode(password)) // 비밀번호 암호화
             .username("홍길동")
-            .password("test1")
+            .password("test1") // 원본 비밀번호 - 암호화됨
             .roles("USER", "ADMIN")
             .build();
         return new InMemoryUserDetailsManager(userDetails);
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
