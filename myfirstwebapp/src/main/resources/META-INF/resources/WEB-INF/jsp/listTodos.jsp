@@ -9,19 +9,18 @@
     </head>
 
     <body>
-        <div>Welcome ${name}</div>
-        <hr>
-        <h1>Todo List</h1>
-        <table>
-            <thead>
+        <div class="container">
+            <h1>Todo List</h1>
+            <table class="table">
+                <thead>
                 <tr>
                     <th>id</th>
                     <th>할일</th>
                     <th>목표 날짜</th>
                     <th>완료 여부</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <c:forEach items="${todos}" var="todo">
                     <tr>
                         <td>${todo.id}</td>
@@ -30,8 +29,9 @@
                         <td>${todo.done}</td>
                     </tr>
                 </c:forEach>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
 
 
         <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>

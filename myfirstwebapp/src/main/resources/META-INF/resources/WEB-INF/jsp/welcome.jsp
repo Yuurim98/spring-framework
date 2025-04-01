@@ -7,8 +7,9 @@
     </head>
 
     <body>
-        <div>Welcome ${name}</div>
-        <hr>
-        <div>TodoList<a href="list-todos">확인하기</a></div>
+        <div class="container">
+            <h1>Welcome ${name}</h1>
+            <a href="list-todos">Todos 확인하기</a>
+        </div>
     </body>
 </html>
