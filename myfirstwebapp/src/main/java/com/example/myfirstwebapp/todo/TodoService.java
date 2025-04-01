@@ -3,6 +3,7 @@ package com.example.myfirstwebapp.todo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,5 +25,9 @@ public class TodoService {
     public void addTodo(String username, String description, LocalDate targetDate, boolean done) {
         Todo todo = new Todo(++todosCount, username, description, targetDate, false);
         todos.add(todo);
+    }
+
+    public void deleteById(int id) {
+        todos.removeIf(todo -> todo.getId() == id);
     }
 }
