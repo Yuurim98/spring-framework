@@ -17,7 +17,7 @@
                     <th>id</th>
                     <th>할일</th>
                     <th>목표 날짜</th>
-                    <th>완료 여부</th>
+                    <th>완료</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,6 +31,7 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <a href="add-todo" class="btn btn-success">등록하기</a>
         </div>
 
 
