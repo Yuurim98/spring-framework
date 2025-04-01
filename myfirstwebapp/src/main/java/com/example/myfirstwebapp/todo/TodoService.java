@@ -1,5 +1,6 @@
 package com.example.myfirstwebapp.todo;
 
+import jakarta.validation.Valid;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,8 @@ public class TodoService {
     private static int todosCount = 0;
 
     static {
-        todos.add(new Todo(++todosCount, "test-name", "Spring", LocalDate.now().plusYears(1), false));
+        todos.add(
+            new Todo(++todosCount, "test-name", "Spring", LocalDate.now().plusYears(1), false));
         todos.add(new Todo(++todosCount, "test-name", "JPA", LocalDate.now().plusYears(1), false));
         todos.add(new Todo(++todosCount, "test-name", "AWS", LocalDate.now().plusYears(1), false));
     }
@@ -29,5 +31,16 @@ public class TodoService {
 
     public void deleteById(int id) {
         todos.removeIf(todo -> todo.getId() == id);
+    }
+
+    public Todo findById(int id) {
+        return todos.stream()
+            .filter(todo -> todo.getId() == id)
+            .findFirst().get();
+    }
+
+    public void updateTodo(@Valid Todo todo) {
+        deleteById(todo.getId());
+        todos.add(todo);
     }
 }
