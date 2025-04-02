@@ -14,13 +14,15 @@ public class TodoService {
 
     static {
         todos.add(
-            new Todo(++todosCount, "test-name", "Spring", LocalDate.now().plusYears(1), false));
-        todos.add(new Todo(++todosCount, "test-name", "JPA", LocalDate.now().plusYears(1), false));
-        todos.add(new Todo(++todosCount, "test-name", "AWS", LocalDate.now().plusYears(1), false));
+            new Todo(++todosCount, "홍길동", "Spring", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "홍길동", "JPA", LocalDate.now().plusYears(1), false));
+        todos.add(new Todo(++todosCount, "홍길동", "AWS", LocalDate.now().plusYears(1), false));
     }
 
     public List<Todo> findByUsername(String username) {
-        return todos;
+        return todos.stream()
+            .filter(todo -> todo.getUsername().equalsIgnoreCase(username))
+            .toList();
     }
 
     public void addTodo(String username, String description, LocalDate targetDate, boolean done) {
