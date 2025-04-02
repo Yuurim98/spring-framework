@@ -13,13 +13,19 @@ public class SpringSecurityConfiguration {
 
     @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
+        UserDetails userDetails1 = createNewUser("홍길동", "test1");
+        UserDetails userDetails2 = createNewUser("홍동", "test2");
+        return new InMemoryUserDetailsManager(userDetails1, userDetails2);
+    }
+
+    private UserDetails createNewUser(String username, String password) {
         UserDetails userDetails = User.builder()
-            .passwordEncoder(password -> passwordEncoder().encode(password)) // 비밀번호 암호화
-            .username("홍길동")
-            .password("test1") // 원본 비밀번호 - 암호화됨
+            .passwordEncoder(input -> passwordEncoder().encode(input)) // 비밀번호 암호화
+            .username(username)
+            .password(password) // 원본 비밀번호 - 암호화됨
             .roles("USER", "ADMIN")
             .build();
-        return new InMemoryUserDetailsManager(userDetails);
+        return userDetails;
     }
 
     @Bean
