@@ -1,14 +1,20 @@
 package com.example.myfirstwebapp.todo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
+@Entity
 public class Todo {
 
+    @Id
+    @GeneratedValue
     private int id;
     private String username;
 
-    @Size(min = 10, message = "최소 10자 이상 입력하세요")
+    @Size(min = 2, message = "최소 두글자 이상 입력하세요")
     private String description;
     private LocalDate targetDate;
     private boolean done;
@@ -20,6 +26,8 @@ public class Todo {
         this.targetDate = targetDate;
         this.done = done;
     }
+
+    public Todo() {}
 
     public int getId() {
         return id;
