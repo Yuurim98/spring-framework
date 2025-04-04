@@ -22,7 +22,7 @@ public class UserDaoService {
     }
 
     public User findOne(int id) {
-        return users.stream().filter(user -> user.getId().equals(id)).findFirst().get();
+        return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
     }
 
     public User saveUser(User user) {
