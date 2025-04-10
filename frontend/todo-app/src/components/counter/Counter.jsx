@@ -1,18 +1,19 @@
 import { useState } from "react";
+import { PropTypes } from "prop-types";
 import "./Counter.css";
 
-export default function Counter() {
+export default function Counter({ by = 1 }) {
     const [count, setCount] = useState(0);
 
     function incrementCounterFunction() {
         console.log("증가 버튼 클릭");
-        setCount(count + 1);
+        setCount(count + by);
         console.log(count);
     }
 
     function decrementCounterFunction() {
         console.log("감소 버튼 클릭");
-        setCount(count - 1);
+        setCount(count - by);
     }
     return (
         <div className="Counter">
@@ -22,15 +23,19 @@ export default function Counter() {
                     className="counterButton"
                     onClick={incrementCounterFunction}
                 >
-                    +1
+                    +{by}
                 </button>
                 <button
                     className="counterButton"
                     onClick={decrementCounterFunction}
                 >
-                    -1
+                    -{by}
                 </button>
             </div>
         </div>
     );
 }
+
+Counter.propTypes = {
+    by: PropTypes.number,
+};
