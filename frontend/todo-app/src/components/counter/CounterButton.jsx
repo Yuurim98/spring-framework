@@ -6,25 +6,18 @@ export default function CounterButton({
     incrementMethod,
     decrementMethod,
 }) {
-    function incrementCounterFunction() {
-        incrementMethod(by);
-    }
-
-    function decrementCounterFunction() {
-        decrementMethod(by);
-    }
     return (
         <div className="Counter">
             <div>
                 <button
                     className="counterButton"
-                    onClick={incrementCounterFunction}
+                    onClick={() => incrementMethod(by)}
                 >
                     +{by}
                 </button>
                 <button
                     className="counterButton"
-                    onClick={decrementCounterFunction}
+                    onClick={() => decrementMethod(by)}
                 >
                     -{by}
                 </button>
