@@ -36,24 +36,15 @@ function LoginComponent() {
         }
     }
 
-    function SuccessMessageComponenet() {
-        if (showSuccessMessage) {
-            return <div className="successMessage">로그인 성공</div>;
-        }
-        return null;
-    }
-
-    function ErrorMessageComponenet() {
-        if (showErrorMessage) {
-            return <div className="errorMessage">로그인 실패</div>;
-        }
-        return null;
-    }
-
     return (
         <div className="Login">
-            <SuccessMessageComponenet />
-            <ErrorMessageComponenet />
+            {showSuccessMessage && (
+                <div className="successMessage">로그인 성공</div>
+            )}
+            {showErrorMessage && (
+                <div className="errorMessage">로그인 실패</div>
+            )}
+
             <div className="LoginForm">
                 <div>
                     <label>name: </label>
