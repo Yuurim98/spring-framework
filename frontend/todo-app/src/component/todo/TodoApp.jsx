@@ -50,6 +50,7 @@ function LoginComponent() {
 
     return (
         <div className="Login">
+            <h1>Login</h1>
             {showSuccessMessage && (
                 <div className="successMessage">로그인 성공</div>
             )}
@@ -87,7 +88,12 @@ function LoginComponent() {
 }
 
 function WelcomeComponent() {
-    return <div className="Welcome">Welcome 컴포넌트</div>;
+    return (
+        <div className="Welcome">
+            <h1>Welcome</h1>
+            <div>Welcome 컴포넌트</div>
+        </div>
+    );
 }
 
 function ErrorComponent() {
