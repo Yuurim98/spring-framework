@@ -13,6 +13,7 @@ export default function TodoApp() {
                         path="/welcome"
                         element={<WelcomeComponent />}
                     ></Route>
+                    <Route path="*" element={<ErrorComponent />}></Route>
                 </Routes>
             </BrowserRouter>
         </div>
@@ -87,4 +88,13 @@ function LoginComponent() {
 
 function WelcomeComponent() {
     return <div className="Welcome">Welcome 컴포넌트</div>;
+}
+
+function ErrorComponent() {
+    return (
+        <div className="ErrorComponent">
+            <h1>Error</h1>
+            <div>페이지를 찾을 수 없습니다 404</div>
+        </div>
+    );
 }
