@@ -5,6 +5,7 @@ import {
     Route,
     useNavigate,
     useParams,
+    Link,
 } from "react-router-dom";
 import "./TodoApp.css";
 
@@ -101,7 +102,9 @@ function WelcomeComponent() {
     return (
         <div className="Welcome">
             <h1>Welcome {username}</h1>
-            <div>Welcome </div>
+            <div>
+                Todos <Link to="/todos">보러가기</Link>
+            </div>
         </div>
     );
 }
