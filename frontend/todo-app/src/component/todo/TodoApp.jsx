@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    useNavigate,
+    useParams,
+} from "react-router-dom";
 import "./TodoApp.css";
 
 export default function TodoApp() {
@@ -10,7 +16,7 @@ export default function TodoApp() {
                     <Route path="/" element={<LoginComponent />}></Route>
                     <Route path="/login" element={<LoginComponent />}></Route>
                     <Route
-                        path="/welcome"
+                        path="/welcome/:username"
                         element={<WelcomeComponent />}
                     ></Route>
                     <Route path="*" element={<ErrorComponent />}></Route>
@@ -41,7 +47,7 @@ function LoginComponent() {
         if (username === "test-name" && password === "testpw") {
             setShowSuccessMessage(true);
             setShowErrorMessage(false);
-            navigate("/welcome");
+            navigate(`/welcome/${username}`);
         } else {
             setShowSuccessMessage(false);
             setShowErrorMessage(true);
@@ -88,10 +94,13 @@ function LoginComponent() {
 }
 
 function WelcomeComponent() {
+    const { username } = useParams();
+    console.log(username);
+
     return (
         <div className="Welcome">
-            <h1>Welcome</h1>
-            <div>Welcome 컴포넌트</div>
+            <h1>Welcome {username}</h1>
+            <div>Welcome </div>
         </div>
     );
 }
