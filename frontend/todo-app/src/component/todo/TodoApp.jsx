@@ -12,6 +12,7 @@ import "./TodoApp.css";
 export default function TodoApp() {
     return (
         <div className="TodoApp">
+            <HeaderComponent />
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LoginComponent />} />
@@ -21,9 +22,11 @@ export default function TodoApp() {
                         element={<WelcomeComponent />}
                     />
                     <Route path="/todos" element={<ListTodosComponent />} />
+                    <Route path="/logout" element={<LogoutComponent />} />
                     <Route path="*" element={<ErrorComponent />} />
                 </Routes>
             </BrowserRouter>
+            <FooterComponent />
         </div>
     );
 }
@@ -157,6 +160,31 @@ function ListTodosComponent() {
                     </tbody>
                 </table>
             </div>
+        </div>
+    );
+}
+
+function HeaderComponent() {
+    return (
+        <div className="header">
+            Header <hr />
+        </div>
+    );
+}
+
+function FooterComponent() {
+    return (
+        <div className="footer">
+            <hr /> Footer
+        </div>
+    );
+}
+
+function LogoutComponent() {
+    return (
+        <div className="LogoutComponent">
+            <h1>Logout</h1>
+            <div>로그아웃되었습니다</div>
         </div>
     );
 }
