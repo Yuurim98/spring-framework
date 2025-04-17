@@ -47,9 +47,7 @@ export default function HeaderComponent() {
                                     <Link
                                         className="nav-link"
                                         to="/logout"
-                                        onClick={() =>
-                                            authContext.setAuthenticated(false)
-                                        }
+                                        onClick={authContext.logout}
                                     >
                                         Logout
                                     </Link>

@@ -5,7 +5,6 @@ import { useAuth } from "../security/AuthContext";
 export default function LoginComponent() {
     const [username, setUsername] = useState("test-name");
     const [password, setPassword] = useState("");
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const navigate = useNavigate();
     const authContext = useAuth();
@@ -19,24 +18,16 @@ export default function LoginComponent() {
     }
 
     function handleSubmit() {
-        if (username === "test-name" && password === "testpw") {
-            setShowSuccessMessage(true);
-            setShowErrorMessage(false);
+        if (authContext.login(username, password)) {
             navigate(`/welcome/${username}`);
-            authContext.setAuthenticated(true);
         } else {
-            setShowSuccessMessage(false);
             setShowErrorMessage(true);
-            authContext.setAuthenticated(false);
         }
     }
 
     return (
         <div className="Login">
             <h1>Login</h1>
-            {showSuccessMessage && (
-                <div className="successMessage">로그인 성공</div>
-            )}
             {showErrorMessage && (
                 <div className="errorMessage">로그인 실패</div>
             )}
