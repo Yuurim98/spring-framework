@@ -7,7 +7,7 @@ import ListTodosComponent from "./ListTodosComponent";
 import WelcomeComponent from "./WelcomeComponent";
 import ErrorComponent from "./ErrorComponent";
 import FooterComponent from "./FooterComponent";
-import AuthProvider, { useAuth } from "../security/AuthContext";
+import AuthProvider, { useAuth } from "./security/AuthContext";
 import "./TodoApp.css";
 
 function AuthencatedRoute({ children }) {
