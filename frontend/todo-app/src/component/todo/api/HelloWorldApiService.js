@@ -10,5 +10,11 @@ import axios from "axios";
 //     return axios.get("http://localhost:8080/hello-world-bean");
 // }
 
-export const retrieveHelloWorldBean = () =>
-    axios.get("http://localhost:8080/hello-world-bean");
+const api = axios.create({
+    baseURL: "http://localhost:8080",
+});
+
+export const retrieveHelloWorldBean = () => api.get("/hello-world-bean");
+
+export const retrieveHelloWorldPathVariable = (name) =>
+    api.get(`/hello-world/path-variable/${name}`);
