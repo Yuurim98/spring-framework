@@ -3,18 +3,22 @@ import {
     deleteTodoApi,
     retrieveAllTodosForUsernameApi,
 } from "./api/TodoApiService";
+import { useAuth } from "./security/AuthContext";
 
 export default function ListTodosComponent() {
     const [todos, setTodos] = useState([]);
 
     const [message, setMessage] = useState(null);
 
+    const authContext = useAuth();
+    const username = authContext.username;
+
     useEffect(() => refreshTodos(), []);
 
     // refreshTodos();
 
     function refreshTodos() {
-        retrieveAllTodosForUsernameApi("test")
+        retrieveAllTodosForUsernameApi(username)
             .then((response) => {
                 // console.log(response.data);
                 setTodos(response.data);
@@ -23,7 +27,7 @@ export default function ListTodosComponent() {
     }
 
     function deleteTodo(id) {
-        deleteTodoApi("test", id)
+        deleteTodoApi(username, id)
             .then(() => {
                 setMessage("삭제되었습니다");
                 refreshTodos();
