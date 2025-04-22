@@ -9,3 +9,6 @@ export const retrieveAllTodosForUsernameApi = (username) =>
 
 export const deleteTodoApi = (username, id) =>
     api.delete(`/users/${username}/todos/${id}`);
+
+export const retrieveTodoApi = (username, id) =>
+    api.get(`/users/${username}/todos/${id}`);
