@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useAuth } from "./security/AuthContext";
 import { retrieveTodoApi } from "./api/TodoApiService";
 import { useEffect, useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 
 export default function TodoComponent() {
     const { id } = useParams();
@@ -26,6 +26,21 @@ export default function TodoComponent() {
         console.log(values);
     }
 
+    function validate(values) {
+        let errors = {};
+
+        if (values.description.length < 5) {
+            errors.description = "최소 5자 이상 작성하세요.";
+        }
+
+        if (values.targetDate === "") {
+            errors.targetDate = "날짜를 선택하세요.";
+        }
+
+        console.log(values);
+        return errors;
+    }
+
     return (
         <div className="container">
             <h1>Todo</h1>
@@ -34,9 +49,23 @@ export default function TodoComponent() {
                     initialValues={{ description, targetDate }}
                     enableReinitialize={true}
                     onSubmit={onSubmit}
+                    validate={validate}
+                    validateOnChange={false}
+                    validateOnBlur={false}
                 >
                     {(props) => (
                         <Form>
+                            <ErrorMessage
+                                name="description"
+                                component="div"
+                                className="alert alert-warning"
+                            />
+
+                            <ErrorMessage
+                                name="targetDate"
+                                component="div"
+                                className="alert alert-warning"
+                            />
                             <fieldse className="form-group">
                                 <label>Description</label>
                                 <Field
