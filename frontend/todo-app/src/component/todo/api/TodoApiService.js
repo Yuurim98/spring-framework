@@ -12,3 +12,6 @@ export const deleteTodoApi = (username, id) =>
 
 export const retrieveTodoApi = (username, id) =>
     api.get(`/users/${username}/todos/${id}`);
+
+export const updateTodoApi = (username, id, todo) =>
+    api.put(`/users/${username}/todos/${id}`, todo);
