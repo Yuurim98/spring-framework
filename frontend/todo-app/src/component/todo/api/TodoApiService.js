@@ -15,3 +15,6 @@ export const retrieveTodoApi = (username, id) =>
 
 export const updateTodoApi = (username, id, todo) =>
     api.put(`/users/${username}/todos/${id}`, todo);
+
+export const createTodoApi = (username, todo) =>
+    api.post(`/users/${username}/todos`, todo);

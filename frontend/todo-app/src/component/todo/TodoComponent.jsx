@@ -1,8 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "./security/AuthContext";
-import { retrieveTodoApi, updateTodoApi } from "./api/TodoApiService";
+import {
+    createTodoApi,
+    retrieveTodoApi,
+    updateTodoApi,
+} from "./api/TodoApiService";
 import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import moment from "moment";
 
 export default function TodoComponent() {
     const { id } = useParams();
@@ -15,12 +20,14 @@ export default function TodoComponent() {
     useEffect(() => retrieveTodos(), [id]);
 
     function retrieveTodos() {
-        retrieveTodoApi(username, id)
-            .then((response) => {
-                setDescription(response.data.description);
-                setTargetDate(response.data.targetDate);
-            })
-            .catch((error) => console.log(error));
+        if (id != -1) {
+            retrieveTodoApi(username, id)
+                .then((response) => {
+                    setDescription(response.data.description);
+                    setTargetDate(response.data.targetDate);
+                })
+                .catch((error) => console.log(error));
+        }
     }
 
     function onSubmit(values) {
@@ -32,11 +39,20 @@ export default function TodoComponent() {
             done: false,
         };
         console.log(todo);
-        updateTodoApi(username, id, todo)
-            .then((response) => {
-                navigate("/todos");
-            })
-            .catch((error) => console.log(error));
+
+        if (id == -1) {
+            createTodoApi(username, todo)
+                .then((response) => {
+                    navigate("/todos");
+                })
+                .catch((error) => console.log(error));
+        } else {
+            updateTodoApi(username, id, todo)
+                .then((response) => {
+                    navigate("/todos");
+                })
+                .catch((error) => console.log(error));
+        }
     }
 
     function validate(values) {
@@ -46,7 +62,7 @@ export default function TodoComponent() {
             errors.description = "최소 5자 이상 작성하세요.";
         }
 
-        if (values.targetDate === "") {
+        if (values.targetDate === "" || !moment(values.targetDate).isValid()) {
             errors.targetDate = "날짜를 선택하세요.";
         }
 
