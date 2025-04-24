@@ -16,10 +16,10 @@ const api = axios.create({
 
 export const retrieveHelloWorldBean = () => api.get("/hello-world-bean");
 
-export const retrieveHelloWorldPathVariable = (name) =>
+export const retrieveHelloWorldPathVariable = (name, token) =>
     api.get(`/hello-world/path-variable/${name}`, {
         headers: {
-            Authorization: "Basic dGVzdDp0ZXN0cHc=",
+            Authorization: token,
         },
     });
 
