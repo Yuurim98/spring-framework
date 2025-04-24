@@ -1,12 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 import { retrieveHelloWorldPathVariable } from "./api/HelloWorldApiService";
-import { useAuth } from "./security/AuthContext";
 
 export default function WelcomeComponent() {
     const { username } = useParams();
     const [message, setMessage] = useState(null);
-    const authContext = useAuth();
 
     function callHelloWorldRestApi() {
         // retrieveHelloWorldBean()
@@ -14,7 +12,7 @@ export default function WelcomeComponent() {
         //     .catch((error) => errorResponse(error))
         //     .finally(() => console.log("정리"));
 
-        retrieveHelloWorldPathVariable("길동", authContext.token)
+        retrieveHelloWorldPathVariable("길동")
             .then((response) => successfulResponse(response))
             .catch((error) => errorResponse(error))
             .finally(() => console.log("정리"));

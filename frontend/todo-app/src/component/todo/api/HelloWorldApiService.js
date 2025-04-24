@@ -1,4 +1,4 @@
-import axios from "axios";
+import { apiClient } from "./ApiClient";
 
 // export function retrieveHelloWorldBean() {
 //     // axios
@@ -10,22 +10,18 @@ import axios from "axios";
 //     return axios.get("http://localhost:8080/hello-world-bean");
 // }
 
-const api = axios.create({
-    baseURL: "http://localhost:8080",
-});
+export const retrieveHelloWorldBean = () => apiClient.get("/hello-world-bean");
 
-export const retrieveHelloWorldBean = () => api.get("/hello-world-bean");
-
-export const retrieveHelloWorldPathVariable = (name, token) =>
-    api.get(`/hello-world/path-variable/${name}`, {
-        headers: {
-            Authorization: token,
-        },
+export const retrieveHelloWorldPathVariable = (name) =>
+    apiClient.get(`/hello-world/path-variable/${name}`, {
+        // headers: {
+        //     Authorization: token,
+        // },
     });
 
-export const executeBasicAuthenticationService = (token) =>
-    api.get(`/basicauth`, {
-        headers: {
-            Authorization: token,
-        },
+export const executeBasicAuthenticationService = () =>
+    apiClient.get(`/basicauth`, {
+        // headers: {
+        //     Authorization: token,
+        // },
     });
