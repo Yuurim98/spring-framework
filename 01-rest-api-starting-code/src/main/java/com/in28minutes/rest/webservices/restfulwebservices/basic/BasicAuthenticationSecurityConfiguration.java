@@ -16,8 +16,8 @@ public class BasicAuthenticationSecurityConfiguration {
         return http
             .authorizeHttpRequests(auth ->
                 auth
-                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                    // .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() 버전 6.1 이상
+                    // .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                     .anyRequest().authenticated())
             .httpBasic(Customizer.withDefaults())
             .sessionManagement(
