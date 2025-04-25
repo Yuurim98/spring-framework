@@ -2,12 +2,7 @@ package com.mockito.mockito_demo.business;
 
 public class SomeBusinessImpl {
 
-    private final DataService dataService;
-
-
-    public SomeBusinessImpl(DataService dataService) {
-        this.dataService = dataService;
-    }
+    private DataService dataService;
 
     public int findTheGreatestFromAllData() {
         int[] data = dataService.retrieveAllData();
