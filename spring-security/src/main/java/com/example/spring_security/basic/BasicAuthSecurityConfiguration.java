@@ -55,14 +55,12 @@ public class BasicAuthSecurityConfiguration {
     @Bean
     public UserDetailsService userDetailsService(DataSource dataSource) {
         UserDetails user = User.withUsername("test")
-            // .password("{noop}testpw")
             .password("testpw")
             .passwordEncoder(pw -> passwordEncoder().encode(pw))
             .roles("USER")
             .build();
 
         UserDetails admin = User.withUsername("admin")
-            // .password("{noop}testpw")
             .password("testpw")
             .passwordEncoder(pw -> passwordEncoder().encode(pw))
             .roles("ADMIN")
